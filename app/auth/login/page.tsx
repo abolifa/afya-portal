@@ -28,6 +28,12 @@ const formSchema = z.object({
   password: z.string().min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
 });
 
+// app/auth/login/page.tsx
+export const metadata = {
+  robots: { index: false, follow: false },
+  title: "تسجيل الدخول | نظام عافية الصحي",
+};
+
 const Login = () => {
   const { login } = useAuth();
   const router = useRouter();

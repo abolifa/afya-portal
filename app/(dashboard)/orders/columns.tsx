@@ -18,6 +18,47 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+function ActionCell({ record }: { record: Order }) {
+  const router = useRouter();
+
+  const isDirty = record.status !== "pending";
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <MoreHorizontal className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="center">
+        <DropdownMenuLabel className="text-center font-bold">
+          الإجراءات
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onClick={() => {
+            router.push(`/orders/${record.id}/view`);
+          }}
+        >
+          <View className="mr-2 h-4 w-4" />
+          <span>عرض</span>
+        </DropdownMenuItem>
+
+        {!isDirty && (
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/orders/${record.id}`);
+            }}
+          >
+            <Edit className="mr-2 h-4 w-4" />
+            <span>تعديل</span>
+          </DropdownMenuItem>
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: "id",
@@ -57,47 +98,6 @@ export const columns: ColumnDef<Order>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
-      const record = row.original;
-      const router = useRouter();
-
-      const isDirty = record.status !== "pending";
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="center">
-            <DropdownMenuLabel className="text-center font-bold">
-              الإجراءات
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                router.push(`/orders/${record.id}/view`);
-              }}
-            >
-              <View className="mr-2 h-4 w-4" />
-              <span>عرض</span>
-            </DropdownMenuItem>
-
-            {!isDirty && (
-              <DropdownMenuItem
-                onClick={() => {
-                  router.push(`/orders/${record.id}`);
-                }}
-              >
-                <Edit className="mr-2 h-4 w-4" />
-                <span>تعديل</span>
-              </DropdownMenuItem>
-            )}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    cell: ({ row }) => <ActionCell record={row.original} />,
   },
 ];

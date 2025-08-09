@@ -109,7 +109,7 @@ const OrdersPage = () => {
         })) || []
       );
     }
-  }, [editMode, order]);
+  }, [editMode, order, form]);
 
   const isLoading = centersLoading || (editMode && orderLoading);
 

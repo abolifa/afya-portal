@@ -161,7 +161,7 @@ function Row({
   isLoading,
 }: {
   title: string;
-  value: any;
+  value: string | number | React.ReactNode;
   Icon: LucideIcon;
   isLoading: boolean;
 }) {

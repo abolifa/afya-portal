@@ -161,7 +161,7 @@ export function getUpcomingScheduleDates(
 
 export function getUserImage(image?: string) {
   if (!image) return "/default-avatar.png";
-  return `${process.env.NEXT_PUBLIC_IMAGE_URL}/${image}`;
+  return `https://romuz.com.ly/storage/${image}`;
 }
 
 export function parseLibyanDate(input: string): Date | undefined {

@@ -4,7 +4,7 @@ import axios from "axios";
 const tokenKey = "patient_token";
 
 export const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
+  baseURL: `https://romuz.com.ly/api`,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

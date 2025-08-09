@@ -65,6 +65,8 @@ const Login = () => {
             width={120}
             height={120}
             className=" object-contain mb-2"
+            priority
+            unoptimized
           />
           <h1 className="text-xl font-bold text-center">
             الهيئة الوطنية لأمراض الكلى

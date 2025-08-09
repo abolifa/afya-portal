@@ -79,6 +79,7 @@ const Register = () => {
             height={60}
             className="object-contain"
             priority
+            unoptimized
           />
           <h2 className="text-base font-semibold text-muted-foreground">
             إنشاء حساب جديد
